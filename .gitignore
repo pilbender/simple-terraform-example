@@ -1,0 +1,19 @@
+# Ignore vim undo files.
+*.un~
+
+# Ignore terraform state files, might want to share these so others can 
+# update a provisioning without a complete replacement.
+*.tfstate
+*.tfstate.backup
+
+# Ignore hidden terraform directories
+**/.terraform
+
+# Ignore a user's AWS private key
+*.pem
+
+# IntelliJ files to ignore
+.idea
+
+# Ansible files to ignore
+ansible/site.retry

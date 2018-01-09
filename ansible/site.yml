@@ -1,0 +1,20 @@
+# Filename: site.yml
+# Date: 1-12-18
+# Author: Richard Scott Smith
+
+# Basic edit of the /etc/hosts file
+
+- hosts: all
+  vars:
+    user_for_ssh: ubuntu
+  remote_user: "{{ user_for_ssh }}"
+  become: true
+  #  become_method: sudo
+  #  become_user: root
+
+  tasks: 
+    - name: Edit the original /etc/hosts file 
+      blockinfile:
+        insertafter: "ff02::3 ip6-allhosts"
+        block: "{{ lookup('file', './files/host-customizations') }}"
+        dest: /etc/hosts
